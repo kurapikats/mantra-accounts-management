@@ -1,11 +1,17 @@
 import React from 'react';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+import '../../../../public/css/bootstrap.grids.min.css';
+import '../../../../public/css/styles.css';
 
 const Layout = ({content = () => null }) => (
-  <div>
-    <div>
-      {content()}
+  <MuiThemeProvider>
+    <div className="container-fluid">
+      <div className="col-md-12">
+        {content()}
+      </div>
     </div>
-  </div>
+  </MuiThemeProvider>
 );
 
 export default Layout;
