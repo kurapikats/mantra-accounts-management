@@ -5,28 +5,38 @@ import { AppBar, IconButton, IconMenu, MenuItem, MoreVertIcon } from 'material-u
 import '../../../../public/css/bootstrap.grids.min.css';
 import '../../../../public/css/styles.css';
 
-  const handleTitleClick = () => {
+class Layout extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  handleTitleClick() {
     FlowRouter.go('/');
   }
+
+  render() {
+    const { content } = this.props;
 
     const appBar = (
       <AppBar
         title="My Project"
-        onTitleTouchTap={handleTitleClick}
+        onTitleTouchTap={this.handleTitleClick.bind(this)}
         showMenuIconButton={true}
         zDepth={1}
       />
     );
 
-const Layout = ({content = () => null }) => (
-  <MuiThemeProvider>
-    <div>
-      {appBar}
-      <div className="col-md-12">
-        {content()}
-      </div>
-    </div>
-  </MuiThemeProvider>
-);
+    return(
+      <MuiThemeProvider>
+        <div>
+          {appBar}
+          <div className="col-md-12">
+            {content()}
+          </div>
+        </div>
+      </MuiThemeProvider>
+    );
+  }
+}
 
 export default Layout;

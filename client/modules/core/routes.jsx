@@ -2,6 +2,7 @@ import React from 'react';
 import {mount} from 'react-mounter';
 
 import MainLayout from './components/main_layout.jsx';
+import AdminLayout from './components/admin_layout.jsx';
 import Home from './components/home.jsx';
 import UsersList from './containers/users_list.js';
 import UsersNew from './containers/users_new.js';
@@ -10,6 +11,7 @@ import UsersProfile from './containers/users_profile.js';
 
 export default function (injectDeps, {FlowRouter, Meteor}) {
   const MainLayoutCtx = injectDeps(MainLayout);
+  const AdminLayoutCtx = injectDeps(AdminLayout);
 
   FlowRouter.route('/', {
     name: 'home',
@@ -23,7 +25,7 @@ export default function (injectDeps, {FlowRouter, Meteor}) {
   FlowRouter.route('/admin/users', {
     name: 'users.list',
     action() {
-      mount(MainLayoutCtx, {
+      mount(AdminLayoutCtx, {
         content: () => (<UsersList />)
       });
     }
